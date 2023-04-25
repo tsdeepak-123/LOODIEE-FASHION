@@ -1,0 +1,162 @@
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-t-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                 
+                            <!--====== Product Breadcrumb ======-->
+                            <div class="pd-breadcrumb u-s-m-b-30">
+                                <ul class="pd-breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="/">Home</a></li>
+                                    {{!-- <li class="has-separator">
+
+                                        <a href="shop-side-version-2.html">Electronics</a></li>
+                                    <li class="has-separator">
+
+                                        <a href="shop-side-version-2.html">DSLR Cameras</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="shop-side-version-2.html">Nikon Cameras</a></li>
+                                </ul> --}}
+                            </div>
+                            <!--====== End - Product Breadcrumb ======-->
+
+
+                <!--============================================================== Product section =====================================================-->
+
+                            {{#with productFind}}
+                            <div class="pd u-s-m-b-30">
+                                <div class="slider-fouc pd-wrap">
+                                    <div id="pd-o-initiate">
+                                        <div class="pd-o-img-wrap" data-src="/uploads/{{image.[0]}}">
+
+                                            <img class="u-img-fluid" src="/uploads/{{image.[0]}}" data-zoom-image="/uploads/{{image.[0]}}" alt=""></div>
+                                        <div class="pd-o-img-wrap" data-src="/uploads/{{image.[1]}}">
+
+                                            <img class="u-img-fluid" src="/uploads/{{image.[1]}}" data-zoom-image="/uploads/{{image.[1]}}" alt=""></div>
+                                        <div class="pd-o-img-wrap" data-src="/uploads/{{image.[2]}}">
+
+                                            <img class="u-img-fluid" src="/uploads/{{image.[2]}}" data-zoom-image="/uploads/{{image.[2]}}" alt=""></div>
+                                        <div class="pd-o-img-wrap" data-src="/uploads/{{image.[3]}}">
+
+                                            <img class="u-img-fluid" src="/uploads/{{image.[3]}}" data-zoom-image="/uploads/{{image.[3]}}" alt=""></div>
+                                    </div>
+
+                                    <span class="pd-text">Click for larger zoom</span>
+                                </div>
+                                <div class="u-s-m-t-15">
+                                    <div class="slider-fouc">
+                                        <div id="pd-o-thumbnail">
+                                            <div>
+
+                                                <img class="u-img-fluid" src="/uploads/{{image.[0]}}" alt=""></div>
+                                            <div>
+
+                                                <img class="u-img-fluid" src="/uploads/{{image.[1]}}" alt=""></div>
+                                            <div>
+
+                                                <img class="u-img-fluid" src="/uploads/{{image.[2]}}" alt=""></div>
+                                            <div>
+
+                                                <img class="u-img-fluid" src="/uploads/{{image.[3]}}" alt=""></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--====== End - Product Detail Zoom ======-->
+                        </div>
+                        <div class="col-lg-7" style="margin-top: 150px;">
+
+                            <!--====== Product Right Side Details ======-->
+                            <div class="pd-detail">
+                                <div>
+
+                                    <span class="pd-detail__name">{{productname}}</span></div>
+                                <div>
+                                    <div class="pd-detail__inline">
+
+                                        <span class="pd-detail__price">₹ {{price}}</span>
+                                        </div>
+                                </div>
+                              
+                                <div class="u-s-m-b-15">
+                                    <div class="pd-detail__inline">
+
+                                        <span class="pd-detail__stock">{{stock}}</span>
+
+                                        {{!-- <span class="pd-detail__left">Only 2 left</span></div> --}}
+                                </div>
+                                <div class="u-s-m-b-15">
+
+                                    <span class="pd-detail__preview-desc">{{discription}}</span></div>
+                                <div class="u-s-m-b-15">
+                                    <div class="pd-detail__inline">
+
+                                        <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
+
+                                            <a onclick="addToWish('{{_id
+                                                            }}')">Add to Wishlist</a></div>
+
+                                            {{!-- <span class="pd-detail__click-count">(222)</span></span></div> --}}
+                                </div>
+                                
+                                <div class="u-s-m-b-15">
+                                    
+                                        <div class="pd-detail-inline-2">
+                                            <div class="u-s-m-b-15">
+
+                                                <button style="height:40px; width:223px; background-color:orangered; color:white; border:none; border-radius:22px" type="submit">Buy Now</button></div>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+
+                                               <a onclick="addToCart('{{_id}}')"><button style="height:40px; width:223px; background-color:orangered; color:white; border:none; border-radius:22px" type="submit">Add to Cart</button></a> </div>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            <!--====== End - Product Right Side Details ======-->
+                            {{/with}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+     function addToCart(id) {
+          
+            $.ajax({
+                url: '/addtocart?id=' + id,
+                method: 'GET',
+                success: () => {
+                   swal.fire("Added to Cart", "", "success");
+                    
+                }
+            })
+        } 
+
+         function addToWish(id) {
+          
+            $.ajax({
+                url: '/postwishlist?id=' + id,
+                method: 'GET',
+                success: (response) => {
+                    if(response.status){
+                   swal.fire("Added to Wishlist", "", "success");
+                }else{
+                    swal.fire("Removed From Wishlist", "", "success");
+                }
+                }
+            })
+        } 
+</script>
+          
+

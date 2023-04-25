@@ -1,0 +1,270 @@
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="/">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="">Cart</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-60">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary">SHOPPING CART</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Intro ======-->
+{{!-------------------------------------------------------cart starts------------------------------------------------------------------ --}}
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row">
+                          
+                            <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
+                               
+                                <div class="table-responsive">
+                                    
+
+                                    <table class="table-p">
+                        
+                                        <tbody>
+                                           {{#each cartList}}
+                                            <!--====== Row ======-->
+                                            <tr>
+                                                <td>
+                                                    <div class="table-p__box">
+                                                        <div class="table-p__img-wrap">
+
+                                                            <img style="width:5rem;height:8rem;" src="/uploads/{{image.[0]}}" alt="">
+                                                            <span style="color: red;" id="{{_id}}k"></span>
+                                                            </div>
+                                                            
+                                                        <div class="table-p__info">
+
+                                                            <span class="table-p__name">
+
+                                                                <a href="product-detail.html">{{productname}}</a></span>
+
+                                                            <span class="table-p__category">
+
+                                                                <a href="shop-side-version-2.html">{{category}}</a></span>
+                                                            {{!-- <ul class="table-p__variant-list">
+                                                                <li>
+
+                                                                    <span>Size: 22</span></li>
+                                                                <li>
+
+                                                                    <span>Color: Red</span></li>
+                                                            </ul> --}}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                    <span class="table-p__price" id="{{_id}}price">₹ {{price}}</span></td>
+                                                <td>
+                                                    <div class="table-p__input-counter-wrap">
+                                                        <!--====== Input Counter ======-->
+                                                        <div class="input-counter">
+
+                                                            <button onclick="updateQuantity('decrement', '{{_id}}','{{stock}}')"><span class="input-counter__minus fas fa-minus"></span></button>
+
+                                                           <span class="quantity" data-id="{{_id}}">{{quantity}}</span>
+
+                                                            <button onclick="updateQuantity('increment', '{{_id}}','{{stock}}')"><span class="input-counter__plus fas fa-plus"></span></button></div>
+                                                        <!--====== End - Input Counter ======-->
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-p__del-wrap">
+
+                                                        <a class="far fa-trash-alt table-p__delete-link" onclick="removeCart('{{_id}}','{{productname}}')"></a></div>
+                                                </td>
+                                            </tr>
+                                            <!--====== End - Row ======-->
+                                            {{/each}}
+                                        </tbody>
+                                            
+                                    </table>
+                                     
+                                </div>
+                              
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="route-box">
+                                   
+                                    <div class="route-box__g1">
+
+                                        <a class="route-box__link" href="/shop"><i class="fas fa-long-arrow-alt-left"></i>
+
+                                            <span>CONTINUE SHOPPING</span></a></div>
+                                             
+                                    <div class="route-box__g2">
+                                        <a class="route-box__link" href="#"><i class="fas fa-trash"></i>
+                                            <span>CLEAR CART</span></a>
+
+                                        <a class="route-box__link" href="cart.html"><i class="fas fa-sync"></i>
+
+                                            <span>UPDATE CART</span></a></div>
+                                           
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+    {{!-------------------------------------------------------cart ends------------------------------------------------------------------ --}}
+
+            <!--====== Section 3 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
+                                <form class="f-cart">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                           
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                            <div class="f-cart__pad-box">
+                                                <div class="u-s-m-b-30">
+                                                    <table class="f-cart__table">
+                                                        <tbody>
+                                                            
+                                                            {{!-- <tr>
+                                                                <td>SUBTOTAL</td>
+                                                                <td>$379.00</td>
+                                                            </tr>  --}}
+                                                            <tr>
+                                                                <td>GRAND TOTAL</td>
+                                                                <td id="totalprice">₹ {{Grandtotal}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+
+                                                    <a href="/checkout"><button class="btn btn--e-brand-b-2" type="button"> PROCEED TO CHECKOUT</button></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 3 ======-->
+        </div>
+        <!--====== End - App Content ======-->
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+      function removeCart(id, pro) {
+            Swal.fire({
+                title: `Do you want remove ${pro} from cart?`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Removed!', '', 'success')
+
+                    $.ajax({
+                        url: "/deletecart?id=" + id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+</script>
+
+
+<script>
+  function updateQuantity(operation, productId,stock) {
+    const quantityElem = document.querySelector(`.quantity[data-id="${productId}"]`);
+    let quantity = parseInt(quantityElem.innerText);
+
+    if (operation === 'increment') {
+      quantity++;
+    } else if (operation === 'decrement' && quantity > 1) {
+      quantity--;
+    }
+
+    updateQuantityAjax(quantity, productId,stock);
+    quantityElem.innerText = quantity;
+  }
+
+</script>
+<script>
+function updateQuantityAjax(count, productId,stock) {
+    $.ajax({
+      url: '/cart/update/' + productId,
+      data: {
+        products: productId,
+        count: count,
+        stock
+      },
+      method: 'put',
+      success: (response) => {
+        console.log(response.data);
+        if (response.status) {
+          var data = response.data;
+          $(`#${productId}price`).html(data.price);
+          $('#totalprice').html(data.total);
+          $(`#${productId}k`).html(data.nodata)
+          
+        }
+        else{
+          $(`#${productId}k`).html(response.data)
+        }
+      }
+    })
+  }
+  </script>

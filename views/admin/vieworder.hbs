@@ -1,0 +1,159 @@
+
+            <!-- Table Start -->
+            <div class="container-fluid pt-4 px-4"style="margin-top:50px">
+                <div class="row g-4">
+                    
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">ORDER TABLE</h6>
+                            <div class="table-fixed table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table" id="ordertable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">SL.NO</th>
+                                            <th scope="col">ORDER NO</th>
+                                            <th scope="col">USER NAME</th>
+                                            <th scope="col">DATE</th>
+                                            <th scope="col">TOTAL PRICE</th>
+                                            <th scope="col">PAYMENT TYPE</th>
+                                            <th scope="col">OPTIONS</th>
+                                            <th scope="col">STATUS</th>
+                                            <th scope="col">DELIVERY STATUS</th>
+                                           <th scope="col">VIEW ORDER</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each orderData}}
+                                        
+                                        <tr>
+                                            <td>{{inc @index}}</td>
+                                            <td>{{_id}}</td>
+                                            <td>{{username}}</td>
+                                            <td>{{orderdate}}</td>
+                                            <td>{{totalprice}}</td>
+                                            <td>{{payment}}</td>
+                                            {{#if is_cancelled}}
+                                            <td>Cancelled</td>
+                                        {{else}}
+                                        {{#if is_delivered}}
+                                        <td>Order Delivered</td>
+                                        {{else}}
+                                           <td><div class="btn-group"><a onclick="CancelOrder('{{_id}}')">
+                                       <button type="button" class="btn btn-primary" aria-haspopup="true" aria-expanded="false">
+                                         Cancel order
+                                        </button></a>
+                                         </div></td>
+                                         {{/if}}
+                                        {{/if}}
+                                        {{#if orderStatus}}
+                                        <td>Shiped</td>
+                                        {{else}}
+                                        <td><div class="btn-group"><a onclick="ShipOrder('{{_id}}')">
+                                       <button class="btn btn-success " aria-haspopup="true" aria-expanded="false">
+                                         Ship order
+                                        </button></a>
+                                         </div></td>
+                                        {{/if}}
+                                        {{#if is_delivered}}
+                                        
+                                        <td>Delivered</td>
+                                        {{else}}
+                                        <td><div class="btn-group"><a onclick="OrderDelivered('{{_id}}')">
+                                       <button class="btn btn-warning " aria-haspopup="true" aria-expanded="false">
+                                         Delivery completed
+                                        </button></a>
+                                         </div></td>
+                                        {{/if}}
+                                           <td><a href="/admin/adminorderview?id={{_id}}">VIEW ORDER</td></a> 
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     
+                </script>
+
+          <script>
+       $(document).ready( function () {
+    $('#ordertable').DataTable();
+} );
+ </script>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+    
+        function CancelOrder(id) {
+            Swal.fire({
+                title: `Are you sure want to cancel the order`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('cancelled!', '', 'success')
+
+                    $.ajax({
+                        url: "/cancelorder?id=" + id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+        function ShipOrder(id) {
+            Swal.fire({
+                title: `Are you sure want to ship the order`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('shiped!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/shiporder?id=" + id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+         function OrderDelivered(id) {
+            Swal.fire({
+                title: `Order Delivered?`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Delivered!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/orderdelivery?id=" + id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+          
+</script>

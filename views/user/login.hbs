@@ -1,0 +1,53 @@
+
+    <div class="containerone">
+      {{!-- <div class="forms-container"> --}}
+        <div class="signin-signup">
+          <form action="/loginsubmit" class="sign-in-form" name="submit" onclick="return validate()" method="post">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text"name="email" placeholder="email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="password" placeholder="Password" />
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+            <a href="" style="text-decoration: none; color:blue;font-size:15px;">FORGOT PASSWORD ?</a>
+            <p style="color: red;margin-top: 20px;" id="error-messege">{{messege}}</p>
+          </form>
+          </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>New here ?</h3>
+            <p>
+              "Join our ecommerce community today! Create an account and 
+              start enjoying exclusive deals and promotions."
+            </p>
+            <a href="/signup"><button class="btn transparent" id="sign-up-btn">
+              Sign up
+            </button></a>
+    </div>
+      <script>
+        function validate(){
+           var email=document.submit.email.value;
+           var password=document.submit.password.value;
+
+           var reg = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+           var passworderror=(/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/)
+           var error=document.getElementById("error-message");
+
+
+   if(reg.test(email)==false){
+      error.innerHTML='invalid email id'
+      return false;
+    }
+    if(passworderror.test(password)==false){
+        error.innerHTML='Password must contain 8 characters, At least one special character, At least one uppercase letter'
+        return false;
+    }
+    return true
+        }
+      </script>

@@ -1,0 +1,97 @@
+
+    <div class="containerone">
+      {{!-- <div class="forms-container"> --}}
+        <div class="signin-signup">
+          <form action="/signupsubmit" class="sign-in-form" method="post" name="submit" onsubmit="return validate()">
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" name="username" placeholder="Username" />
+            </div>
+             <div class="input-field">
+              <i class="fas fa-phone"></i>
+              <input type="text" name="phone" placeholder="phone number" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email"name="email" placeholder="Email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password"name="password"placeholder="Password" />
+            </div>
+             <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="cpassword" placeholder="confirm Password" />
+            </div>
+            <input type="submit" value="SIGN UP" class="btn solid" />
+             <p style="color: red; margin-top: 20px;" id="error-messege">{{messege}}</p>
+             <p style="color:green; margin-top:20px;">{{messegeEmail}}</p>
+
+          </form>
+          </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>one of us ?</h3>
+            <p>
+              "Welcome to our ecommerce website! Please sign in to 
+              access your account and start shopping."
+            </p>
+            <a href="/signin"><button class="btn transparent" id="sign-up-btn">
+              Sign in
+            </button></a>
+    </div>
+      
+<script>
+  function validate(){
+    var name=document.submit.username.value;
+    var email=document.submit.email.value;
+    var phone=document.submit.phone.value;
+    var password=document.submit.password.value;
+    var cpassword=document.submit.cpassword.value;
+
+    var reg = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+    var nameerror= (/^[A-Za-z]+$/);
+    var phoneerror=(/^[0-9]{10}$/);
+    var passworderror=(/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/)
+    var error=document.getElementById("error-message");
+  
+    if(name==""){
+        error.innerHTML='Please enter your name'
+        return false;
+    }
+    if(nameerror.test(name)==false){
+      error.innerHTML='invalid name'
+      return false;
+  } 
+  if(name.length<5){
+       error.innerHTML='Name should contain atleast 5 elements'
+        return false;
+    }
+    if(email==""){
+        error.innerHTML='Please enter your email id'
+        return false;
+    }
+    if(reg.test(email)==false){
+      error.innerHTML='invalid email id'
+      return false;
+    }
+    if(phoneerror.test(phone)==false){
+        error.innerHTML='Phone number should contain 10 numbers'
+        return false;
+    }
+    if(passworderror.test(password)==false){
+        error.innerHTML='password must contain 8 characters, at least one special character, and at least one uppercase letter'
+        return false;
+    }
+    if(password!==cpassword){
+        error.innerHTML='Passwords do not match'
+         return false;
+    }
+    return true;
+  
+  }
+  
+</script>

@@ -1,0 +1,215 @@
+
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="/">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="">My Account</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="dash">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12">
+
+                                    <!--====== Dashboard Features ======-->
+                                    <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                                        <div class="dash__pad-1">
+
+                                            <span class="dash__text u-s-m-b-16">Hello,{{userName}}</span>
+                                            <ul class="dash__f-list">
+                                                {{!-- <li>
+
+                                                    <a href="dashboard.html">Manage My Account</a></li> --}}
+                                                <li>
+
+                                                    <a href="/myprofile">My Profile</a></li>
+                                                <li>
+
+                                                    <a href="/addressbook">Address Book</a></li>
+                                                {{!-- <li>
+
+                                                    <a href="dash-track-order.html">Track Order</a></li> --}}
+                                                <li>
+
+                                                    <a class="dash-active" href="/myorders">My Orders</a></li>
+                                                {{!-- <li>
+
+                                                    <a href="dash-payment-option.html">My Payment Options</a></li> --}}
+                                                {{!-- <li>
+
+                                                    <a href="dash-cancellation.html">My Returns & Cancellations</a></li> --}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="dash__box dash__box--bg-white dash__box--shadow dash__box--w">
+                                        <div class="dash__pad-1">
+                                           
+                                        </div>
+                                    </div>
+                                    <!--====== End - Dashboard Features ======-->
+                                </div>
+                                <div class="col-lg-9 col-md-12">
+                                    <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                        <div class="dash__pad-2">
+                                            <h1 class="dash__h1 u-s-m-b-14">My Orders</h1>
+
+                                            <span class="dash__text u-s-m-b-30">Here you can see all products that have been orderd.</span>
+                                           
+                                            <div class="m-order__list">
+                                                 {{#each orderData}}
+                        
+                                                <div class="m-order__get">
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+                                                                <div class="manage-o__text-2 u-c-secondary">Order #{{_id}}</div>
+                                                                <div class="manage-o__text u-c-silver">Placed on {{orderdate}}</div>
+                                                            </div>
+                                                            <div>
+                                                                {{#if is_cancelled}}
+                                                                <div>
+                                                                    <P>ORDER CANCELLED</P>
+                                                                    </div>
+                                                                    {{else}}
+                                                                <div>
+
+                                                                <a onclick="CancelOrder('{{_id}}')">
+                                                                <button class="btn btn--e-brand-b-2"  type="submit">
+                                                                    CANCEL ORDER</button></a>
+                                                                    </div>
+                                                                    {{/if}}
+                                                                <div class="dash__link dash__link--brand">
+
+                                                                    <a href="/vieworder?id={{_id}}">VIEW ORDER</a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                       {{!-- {{#products}}  
+                                                    <div class="manage-o__description">
+                                                       
+                                                        
+                                                        <div class="description__container">
+                                                             
+                                                            <div class="description__img-wrap">
+                                                                                     
+                                                            <img class="u-img-fluid" src="/uploads/{{image.[0]}}" alt=""></div>
+                                                            <div class="description-title"></div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div>
+
+                                                                <span class="manage-o__badge badge--processing">Processing</span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Quantity:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{quantity}}</span></span></div>
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Total:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">{{totalprice}}</span></span></div>
+                                                        </div>
+                                                       
+                                                         
+                                                    </div>
+                                                     {{/products}}    --}}
+                                                </div>
+                                                
+                                                {{/each}}
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+        </div>
+
+                                        
+                                <div class="u-s-p-y-60">
+
+                                 <div class="pagination" style="margin-top: -6vw;margin-left:48vw">
+  {{#if (gt totalPages 1)}}
+    {{#if (neq currentPage 1)}}
+      <a  href="/myorders?page={{subtract currentPage 1}}">&laquo;</a>
+    {{/if}}
+
+    {{#each (range 1 totalPages)}}
+      {{#if (or (eq this currentPage) (and (lt (subtract this currentPage) 4) (gt totalPages (add this currentPage 4))))}}
+        <a href="/myorders?page={{this}}" class="{{#if (eq this currentPage)}}active{{/if}}">{{this}}</a>
+      {{/if}}
+    {{/each}}
+
+    {{#if (neq currentPage totalPages)}}
+      <a  href="/myorders?page={{add currentPage 1}}">&raquo;</a>
+    {{/if}}
+  {{/if}}
+</div>
+
+                                </div>
+        <!--====== End - App Content ======-->
+
+
+
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+    
+        function CancelOrder(id, pro) {
+            Swal.fire({
+                title: `Are you sure want to cancel the order`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('cancelled!', '', 'success')
+
+                    $.ajax({
+                        url: "/cancelorder?id=" + id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+          
+</script>

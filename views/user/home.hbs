@@ -1,0 +1,215 @@
+   
+
+   
+   
+   
+   <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Primary Slider ======-->
+            <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-grey">
+                <div class="owl-carousel primary-style-1" id="hero-slider">
+                    {{#each allBannerData}}
+                    {{#if is_listed}}
+                    <div class="hero-slide hero-slide--1" style="background-image: url(/uploads/{{bannerImage.[0]}}); background-size: cover;">
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-12">
+                                   
+                                    <div class="slider-content slider-content--animation">
+                                        
+
+                                        <span class="content-span-1 u-c-secondary">{{bannerName}}</span>
+
+                                        <span class="content-span-2 u-c-secondary">{{bannerSubName}}</span>
+
+                                        <span class="content-span-3 u-c-secondary">{{bannerDiscription}}</span>
+
+                                        <span class="content-span-4 u-c-secondary">Starting At
+
+                                            <span class="u-c-brand">₹ {{bannerPrice}}.00</span></span>
+
+                                        <a class="shop-now-link btn--e-brand" href="/shop">SHOP NOW</a>
+                                        
+                                        </div>
+                                       
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                     {{/each}}
+                </div>
+            </div>
+            <!--====== End - Primary Slider ======-->
+
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row" >
+                            <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
+                                <div class="promotion-o">
+                                    <div class="aspect aspect--bg-grey aspect--square">
+
+                                        <img class="aspect__img" style="width: 500;"  src="/images/site1.png" alt=""></div>
+                                    <div class="promotion-o__content">
+
+                                        <a class="promotion-o__link btn--e-white-brand" href="/shop">Women's Clothing</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
+                                <div class="promotion-o">
+                                    <div class="aspect aspect--bg-grey aspect--square">
+
+                                        <img class="aspect__img" style="width: 500;" src="/images/site3.png" alt=""></div>
+                                    <div class="promotion-o__content">
+
+                                        <a class="promotion-o__link btn--e-white-brand" href="/shop">Kids Clothing</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
+                                <div class="promotion-o">
+                                    <div class="aspect aspect--bg-grey aspect--square">
+
+                                        <img class="aspect__img" style="width: 500;" src="/images/site2.png" alt=""></div>
+                                    <div class="promotion-o__content">
+
+                                        <a class="promotion-o__link btn--e-white-brand" href="/shop">Men's Clothing</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+{{!----------------------------------------------------NEWLY ADDED PRODUCTS----------------------------------------------------------------------------- --}}
+
+            <!--====== Section 3 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-46">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary u-s-m-b-12">PRODUCTS</h1>
+
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Intro ======-->
+
+
+                <!--====== Section Content ======-->
+                
+                <div class="section__content">
+                    
+                    <div class="container">
+                        
+                        <div class="row">
+                            {{#each allProductsData}}
+                            {{#if is_listed}}
+                            
+                            <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
+                                <div class="product-r u-h-100">
+                                    <div class="product-r__container">
+
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="/productview?id={{_id}}">
+
+                                            <img class="aspect__img" src="/uploads/{{image.[0]}}" alt=""></a>
+                                    </div>
+                                    <div class="product-r__info-wrap">
+
+                                        <span class="product-r__category">
+
+                                            <a href="shop-side-version-2.html">{{category.name}}</a></span>
+                                        <div class="product-r__n-p-wrap">
+
+                                            <span class="product-r__name">
+
+                                                <a href="product-detail.html">{{productname}}</a></span>
+
+                                            <span class="product-r__price">₹ {{price}}</span></div>
+
+                                        <span class="product-r__description">{{discription}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/if}}
+                        {{/each}}
+
+                        </div>
+                          
+                    </div>
+                    
+                </div>
+                 
+                
+                <!--====== End - Section Content ======-->
+            </div>
+                                            <div class="u-s-p-y-60">
+
+                                 <div class="pagination" style="margin-left: 48vw;">
+  {{#if (gt totalPages 1)}}
+    {{#if (neq currentPage 1)}}
+      <a  href="/?page={{subtract currentPage 1}}">&laquo;</a>
+    {{/if}}
+
+    {{#each (range 1 totalPages)}}
+      {{#if (or (eq this currentPage) (and (lt (subtract this currentPage) 4) (gt totalPages (add this currentPage 4))))}}
+        <a href="/?page={{this}}" class="{{#if (eq this currentPage)}}active{{/if}}">{{this}}</a>
+      {{/if}}
+    {{/each}}
+
+    {{#if (neq currentPage totalPages)}}
+      <a  href="/?page={{add currentPage 1}}">&raquo;</a>
+    {{/if}}
+  {{/if}}
+</div>
+
+                                </div>
+
+{{!----------------------------------------- NEWLY ENDS-------------------------------------------------------------------------------- --}}
+
+
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4  style="color:black;margin-left:6vw">WELCOME TO LOODIE FASION!</h4>
+                
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+				<h5 style="margin-left: 7vw;color:black;">Thankyou for shoping with US!</h5>
+            </div>
+            <img style="margin-left:46px" src="/images/logoloodiee.png" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Add these scripts to the bottom of your HTML file, after jQuery and Bootstrap JavaScript files -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+{{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+
+
+
+<script>
+	$(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+</script>

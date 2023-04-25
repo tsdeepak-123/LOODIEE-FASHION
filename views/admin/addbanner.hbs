@@ -1,0 +1,52 @@
+
+    <div class="container-fluid position-relative d-flex p-0">
+
+
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h3>ADD BANNER</h3>
+                        </div>
+                        <form action="/admin/postaddbanner" method="post" enctype="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="bannerName" class="form-control" id="floatingText" placeholder="banner name">
+                            <label for="floatingText">Banner name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="bannerSubName" class="form-control" id="floatingText" placeholder="banner sub name">
+                            <label for="floatingText">sub name</label>
+                        </div>
+                        {{!-- <div class="form-floating  mb-3 ">
+                            <input type="text" name="category" class="form-control" id="floatingText" placeholder="Select category">
+                            <label for="floatingText">Category</label>
+                            <div>
+                                <a href=""></a>
+                            </div>
+                        </div> --}}
+
+
+                
+                        <div class="form-floating mb-3">
+                            <input type="text" name="bannerDiscription" class="form-control" id="floatingInput" placeholder="Discription">
+                            <label for="floatingInput">Discription</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" name="bannerPrice" class="form-control" id="floatingPassword" placeholder="Price">
+                            <label for="floatingPassword">Price</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="file" accept="image/*" name="file" class="form-control" id="floatingPassword" placeholder="choose file">
+                            <label for="floatingPassword">Image</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">ADD BANNER</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up End -->
+    </div>
+

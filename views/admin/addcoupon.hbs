@@ -1,0 +1,48 @@
+
+    <div class="container-fluid position-relative d-flex p-0">
+
+
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h3>ADD COUPON</h3>
+                        </div>
+                        <form action="/admin/postaddcoupon" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="couponname" class="form-control" id="floatingText" placeholder="coupon name">
+                            <label for="floatingText">Coupon name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="discountamount" class="form-control" id="floatingText" placeholder="Discount Amount"> 
+                            <label for="floatingText">Discount Amount</label>
+                        </div>
+        
+                        <div class="form-floating mb-3">
+                            <input type="number" name="minamount" class="form-control" id="floatingText" placeholder="Minimum Amount">
+                            <label for="floatingText">Minimum Amount</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="Date" name="expirydate" class="form-control" id="floatingInput" placeholder="Expiry Date">
+                            <label for="floatingInput">expiryDate</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" name="couponcode" class="form-control" id="floatingPassword" placeholder="Coupon Code">
+                            <label for="floatingPassword">Coupon Code</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" name="couponlimit" class="form-control" id="floatingPassword" placeholder="Coupon Limit">
+                            <label for="floatingPassword">Coupon Limit</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">ADD COUPON</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up End -->
+    </div>
+

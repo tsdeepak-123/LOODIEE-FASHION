@@ -1,0 +1,119 @@
+  <div style="margin-left: 72vw;margin-top:2vw">
+    <a href="/admin/addproduct"><button type="button"class="btn btn-success mt-3 ms-3 me-3">ADD NEW PRODUCT<i class="fa fa-plus"></i></button></a>
+  </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+            
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Product table</h6>
+                            <div class="table-fixed table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table" id="producttable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Index</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Brand Name</th>
+                                            <th scope="col">Product Category</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Product Image</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">OPTIONS</th>
+                                           
+                                        </tr>
+                                    </thead> 
+
+                                    <tbody>
+                                        {{#each allProductData}}
+            
+                                        <tr>
+                    
+                                           <td>{{inc @index}}</td>
+                                           <td>{{productname}}</td>
+                                           <td>{{brandname}}</td>
+                                           <td>{{category.name}}</td>
+                                           <td>{{discription}}</td>
+                                           <td>{{stock}}</td>
+                                           <td>{{price}}</td>
+                        
+                                            <td><img src="/uploads/{{image.[0]}}" style="width:25px;height:25px;"></td>
+                                            <td><a href="/admin/editproduct/{{_id}}"><i class="bi bi-pencil-square"></i></a></td>
+                                           {{#if is_listed}}
+                                          
+                                            <td id="block"><a><button class="btn btn-success" onclick="Unlist('{{_id}}','{{productname}}')">listed</button></a></td>
+                                            {{else}}
+                                              <td id="unblock"><a><button class="btn btn-primary" onclick="List('{{_id}}','{{productname}}')">unlist</button></a></td>
+                                            {{/if}}
+                                        </tr>
+                                        {{/each}}
+                                 </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+ 
+
+ <script>
+    $(document).ready(function () {
+    $('#producttable').DataTable();
+});
+ </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+            function List(id,name) {
+            Swal.fire({
+                title: `Are you sure want to list ${name}`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Listed!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/listproduct/"+ id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+
+
+            function Unlist(id,name) {
+            Swal.fire({
+                title: `Are you sure want to unlist ${name}`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Unlisted!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/unlistproduct/"+ id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+
+</script>

@@ -1,0 +1,64 @@
+
+    <div class="container-fluid position-relative d-flex p-0">
+
+
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h3>ADD PRODUCT </h3>
+                        </div>
+                        <form action="/admin/postaddproduct" method="post" enctype="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="productname" class="form-control" id="floatingText" placeholder="product name">
+                            <label for="floatingText">Product name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="brandname" class="form-control" id="floatingText" placeholder="brantname">
+                            <label for="floatingText">Brant name</label>
+                        </div>
+                        {{!-- <div class="form-floating  mb-3 ">
+                            <input type="text" name="category" class="form-control" id="floatingText" placeholder="Select category">
+                            <label for="floatingText">Category</label>
+                            <div>
+                                <a href=""></a>
+                            </div>
+                        </div> --}}
+                        <div class="form-floating  mb-3 ">
+                        <select class="form-select" name="category" aria-label="Default select example">
+                            
+                         <option>Select category</option>
+                       {{#each categoryData}}
+                        <option>{{name}}</option>
+                          {{/each}}
+                         </select>
+                        </div>
+
+
+                        <div class="form-floating mb-3">
+                            <input type="number" name="stock" class="form-control" id="floatingText" placeholder="stock">
+                            <label for="floatingText">Stock</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="discription" class="form-control" id="floatingInput" placeholder="Discription">
+                            <label for="floatingInput">Discription</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" name="price" class="form-control" id="floatingPassword" placeholder="Price">
+                            <label for="floatingPassword">Price</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="file" multiple accept="image/*" name="file" class="form-control" id="floatingPassword" placeholder="choose file">
+                            <label for="floatingPassword">Image</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">ADD PRODUCT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up End -->
+    </div>
+

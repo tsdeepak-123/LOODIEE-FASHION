@@ -1,0 +1,116 @@
+<div style="margin-left: 72vw;margin-top:2vw">
+    <a href="/admin/addbanner"><button type="button"class="btn btn-success mt-3 ms-3 me-3">ADD NEW BANNER<i class="fa fa-plus"></i></button></a>
+  </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+            
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Product table</h6>
+                            <div class="table-fixed table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table"id="bannertable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Index</th>
+                                            <th scope="col">Banner Name</th>
+                                            <th scope="col">Banner Sub Name</th>
+                                            <th scope="col">Banner Discription</th>
+                                            <th scope="col">Banner Price</th>
+                                            <th scope="col">Banner Image</th>
+                                            {{!-- <th scope="col">Edit</th> --}}
+                                            <th scope="col">OPTIONS</th>
+                                           
+                                        </tr>
+                                    </thead> 
+
+                                    <tbody>
+                                        {{#each allBannerData}}
+            
+                                        <tr>
+                    
+                                           <td>{{inc @index}}</td>
+                                           <td>{{bannerName}}</td>
+                                           <td>{{bannerSubName}}</td>
+                                           <td>{{bannerDiscription}}</td>
+                                           <td>{{bannerPrice}}</td>
+                        
+                                            <td><img src="/uploads/{{bannerImage.[0]}}" style="width:70px;height:25px;"></td>
+                                            {{!-- <td><a href="/admin/editproduct/{{_id}}"><i class="bi bi-pencil-square"></i></a></td> --}}
+                                         {{#if is_listed}}
+                                          
+                                            <td id="block"><a><button class="btn btn-success" onclick="Unlist('{{_id}}','{{bannerName}}')">listed</button></a></td>
+                                            {{else}}
+                                              <td id="unblock"><a><button class="btn btn-primary" onclick="List('{{_id}}','{{bannerName}}')">unlist</button></a></td>
+                                            {{/if}}
+                                        </tr>
+                                        {{/each}}
+                                 </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+           </script>
+
+          <script>
+       $(document).ready( function () {
+    $('#bannertable').DataTable();
+} );
+ </script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+            function List(id,name) {
+            Swal.fire({
+                title: `Are you sure want to list ${name}`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Listed!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/listbanner/"+ id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+
+
+            function Unlist(id,name) {
+            Swal.fire({
+                title: `Are you sure want to unlist ${name}`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Unlisted!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin//unlistbanner/"+ id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+
+</script>
+  

@@ -1,0 +1,111 @@
+
+
+
+
+            <!-- Table Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">User Table</h6>
+                            <div class="table-fixed table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table" id="usertable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">SL.NO</th>
+                                            <th scope="col">USERNAME</th>
+                                            <th scope="col">PHONE</th>
+                                            <th scope="col">EMAIL</th>
+                                            <th scope="col">EDIT</th>
+                                            <th scope="col">STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each allUserData}}
+                                        <tr>
+                                            <td>{{inc @index}}</td>
+                                            <td>{{username}}</td>
+                                            <td>{{phone}}</td>
+                                            <td>{{email}}</td>
+                                            <td><a href="/admin/edituser?id={{_id}}"><i class="bi bi-pencil-square"></i></a></td> 
+
+                                             {{#if block}}
+                                          
+                                            <td id="block"><a><button class="btn btn-primary" onclick="Unblock('{{_id}}','{{username}}')">blocked</button></a></td>
+                                            {{else}}
+                                              <td id="unblock"><a><button class="btn btn-success" onclick="Block('{{_id}}','{{username}}')">active</button></a></td>
+                                            {{/if}}
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+              </script>
+
+          <script>
+       $(document).ready( function () {
+    $('#usertable').DataTable();
+} );
+ </script>
+
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script>
+            function Block(id,user) {
+            Swal.fire({
+                title: `Are you sure want to block ${user}`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Blocked!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/blockuser/"+ id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+
+
+            function Unblock(id,user) {
+            Swal.fire({
+                title: `Are you sure want to unblock ${user}`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Unblocked!', '', 'success')
+
+                    $.ajax({
+                        url: "/admin/unblockuser/"+ id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+
+
+</script>

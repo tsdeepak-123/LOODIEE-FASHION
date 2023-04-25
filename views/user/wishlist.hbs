@@ -1,0 +1,157 @@
+
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-y-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="/">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="">Wishlist</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-60">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary">Wishlist</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Intro ======-->
+
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row">
+                            {{#each stocks}}
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                <!--====== Wishlist Product ======-->
+                                
+                                <div class="w-r u-s-m-b-30">
+                                     
+                                    
+                                    <div class="w-r__container">
+                                       
+                                        <div class="w-r__wrap-1">
+                                            
+                                            <div class="w-r__img-wrap">
+
+                                                <img  class="u-img-fluid" src="/uploads/{{image.[0]}}" alt=""></div>
+                                            <div class="w-r__info">
+
+                                                <span class="w-r__name">
+
+                                                    <a href="product-detail.html">{{productname}}</a></span>
+
+                                                <span class="w-r__category">
+
+                                                    <a href="shop-side-version-2.html">{{category}}</a></span>
+
+                                                <span class="w-r__price">₹ {{price}}</span></div>
+                                        </div>
+                                                
+
+                                        <div class="w-r__wrap-2">
+
+                                            <a class="w-r__link btn--e-brand-b-2" onclick="addToCart('{{_id}}')" data-modal="modal" data-modal-id="#add-to-cart">ADD TO CART</a>
+
+                                            <a class="w-r__link btn--e-transparent-platinum-b-2" href="/productview?id={{_id}}">VIEW</a>
+
+                                            <a class="w-r__link btn--e-transparent-platinum-b-2"onclick="removeWish('{{_id}}','{{productname}}')" >REMOVE</a></div>
+                                            
+                                    </div>
+                                     
+                                </div>
+                               
+                                <!--====== End - Wishlist Product ======-->
+                            </div>
+                            {{/each}}
+                            <div class="col-lg-12">
+                                <div class="route-box">
+                                    <div class="route-box__g">
+
+                                        <a class="route-box__link" href="/shop"><i class="fas fa-long-arrow-alt-left"></i>
+
+                                            <span>CONTINUE SHOPPING</span></a></div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+        </div>
+        <!--====== End - App Content ======-->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+       <script>
+
+        function removeWish(id, pro) {
+            Swal.fire({
+                title: `Do you want remove ${pro} from wishlist?`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Removed!', '', 'success')
+
+                    $.ajax({
+                        url: "/deletewishlist?id=" + id,
+                        success: () => {
+                            location.reload()
+                        }
+                    })
+                } else if (result.isDenied) {
+
+                }
+            })
+        }
+          
+
+           function addToCart(id) {
+          
+            $.ajax({
+                url: '/addtocart?id=' + id,
+                method: 'GET',
+                success: () => {
+                   swal.fire("Added to Cart", "", "success");
+                    
+                }
+            })
+        } 
+
+
+    </script>

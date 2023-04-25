@@ -1,0 +1,45 @@
+
+    <div class="container-fluid position-relative d-flex p-0">
+
+
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <a href="index.html" class="">
+                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>ADMIN</h3>
+                            </a>
+                            <h3>ADD USER</h3>
+                        </div>
+                        <form action="/admin/adduserSubmit" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="username" class="form-control" id="floatingText" placeholder="Username">
+                            <label for="floatingText">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="phone" class="form-control" id="floatingText" placeholder="Phone number">
+                            <label for="floatingText">Phone number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="email" class="form-control" id="floatingText" placeholder="Email address">
+                            <label for="floatingText">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingInput" placeholder="password">
+                            <label for="floatingInput">Password</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" name="cpassword" class="form-control" id="floatingPassword" placeholder="confirm password">
+                            <label for="floatingPassword">Confirm password</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">ADD USER</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up End -->
+    </div>
+
