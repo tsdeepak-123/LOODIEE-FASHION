@@ -15,6 +15,8 @@ const checkOut = async (req, res) => {
      const userName = req.session.user.username;
      const userid = req.session?.user?.id;
      const address = req.session.user.SelAddress;
+     const updatedTotal=req.session.updatedTotal
+     const discountAmount=req.session.discountAmount
      const Addressess = await user.findOne({ _id: userid }).lean();
      const couponData=await coupon.find().lean()
     const orderDataList = await cart
@@ -46,7 +48,9 @@ const checkOut = async (req, res) => {
       Grandtotal,
       address,
       couponData,
-      Addressess 
+      Addressess,
+      // updatedTotal,
+      discountAmount
     });
   } catch (error) {
     console.log(error);
