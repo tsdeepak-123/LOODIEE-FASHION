@@ -30,20 +30,20 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="adminhome" class="nav-item nav-link active"><i
+                    <a href="adminhome" class="nav-item nav-link" id="dash"><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="/admin/vieworder"class="nav-item nav-link"><i class="fa fa-th me-2"></i>Orders</a>
+                    <a href="/admin/vieworder"class="nav-item nav-link" id="orders"><i class="fa fa-th me-2"></i>Orders</a>
                     <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown"><i
-                              class="fa fa-laptop me-2"></i>Category</a>
+                        <a href="" class="nav-link dropdown-toggle nav-item" id="category" data-bs-toggle="dropdown"><i
+                              class="fa fa-laptop me-2" id="items"></i>Category</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/admin/viewcategory" class="dropdown-item">View Categories</a>
+                            <a href="/admin/viewcategory" class="dropdown-item" >View Categories</a>
                             <a href="/admin/addcategory" class="dropdown-item">Add Categories</a>
                             {{!-- <a href="element.html" class="dropdown-item">Other Elements</a> --}}
                         </div>
                     </div>
                      <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown"><i
+                        <a href="" class="nav-link dropdown-toggle nav-item" id="users" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Users</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/userdisplay" class="dropdown-item">View users</a>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        <a href="" class="nav-link dropdown-toggle nav-item" id="products" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Products</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/viewproduct" class="dropdown-item">View Products</a>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle " data-bs-toggle="dropdown"><i
+                        <a href="" class="nav-link dropdown-toggle nav-item" id="coupon" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Coupon</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/viewcoupon" class="dropdown-item">View Coupon</a>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        <a href="" class="nav-link dropdown-toggle nav-item" id="banner" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Banner</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/viewbanner" class="dropdown-item">View Banners</a>
